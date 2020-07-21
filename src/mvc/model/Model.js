@@ -19,9 +19,14 @@ const setLastName = name => {
   user.lastName = name;
 };
 
+const getUserObject = () => {
+  return user;
+};
+
 export default {
   getFirstName,
   getLastName,
   setFirstName,
   setLastName,
+  getUserObject,
 };

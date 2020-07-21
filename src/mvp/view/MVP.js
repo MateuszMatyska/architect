@@ -1,25 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View, Button, Text} from 'react-native';
-import {getUserData, setUserData} from '../controller/Controller';
-import Model from '../model/Model';
+import {getUser, setUser} from '../presenter/Presenter';
 
-const MVC = () => {
+const MVP = () => {
   const [fName, setFName] = useState('');
   const [lName, setLName] = useState('');
 
-  const getUser = () => {
-    const user = Model.getUserObject();
+  const getUserAction = () => {
+    const user = getUser();
     setFName(user.firstName);
     setLName(user.lastName);
   };
 
-  const setUser = () => {
-    setUserData('Jax', 'Teller');
-    getUser();
+  const setUserAction = () => {
+    setUser('Tom', 'Shelby');
+    getUserAction();
   };
 
   useEffect(() => {
-    getUser();
+    getUserAction();
   }, []);
 
   return (
@@ -32,7 +31,7 @@ const MVC = () => {
         <Button
           title="Set Data"
           onPress={() => {
-            setUser();
+            setUserAction();
           }}
         />
       </View>
@@ -40,4 +39,4 @@ const MVC = () => {
   );
 };
 
-export default MVC;
+export default MVP;
